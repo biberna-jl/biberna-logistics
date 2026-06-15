@@ -315,4 +315,96 @@
         const on = selected.has(s.key);
         return `<button type="button" data-key="${s.key}" onclick="toggleService('${s.key}')"
           class="opt ${on?'selected':''} text-left rounded-xl border border-line bg-paper p-5 hover:border-bordeaux/50 transition-all relative">
-          <span class="check absolute top-3 right-3 w-5 h-5 rounded-full bg-bordeaux text-white text-[11px
+          <span class="check absolute top-3 right-3 w-5 h-5 rounded-full bg-bordeaux text-white text-[11px] flex items-center justify-center ${on?'':'opacity-0'} transition-opacity">✓</span>
+          <svg class="w-7 h-7 text-bordeaux mb-3" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="${s.icon}"/></svg>
+          <div class="text-ink font-semibold text-sm mb-1">${t}</div>
+          <div class="text-body-2 text-xs font-light leading-snug">${d}</div>
+        </button>`;
+      }).join('');
+    }
+    function toggleService(k){ selected.has(k)?selected.delete(k):selected.add(k); renderServices(); }
+
+    function applyLang() {
+      const dict = I18N[lang];
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => { const k=el.getAttribute('data-i18n'); if(dict[k]!=null) el.textContent=dict[k]; });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => { const k=el.getAttribute('data-i18n-ph'); if(dict[k]!=null) el.placeholder=dict[k]; });
+      document.getElementById('langLabel').textContent = dict._toggle;
+      renderServices();
+    }
+    document.getElementById('langToggle').addEventListener('click', () => { lang = (lang==='de')?'en':'de'; applyLang(); });
+
+    function toggleMenu(){
+      const m=document.getElementById('mobileMenu');
+      const open=m.classList.toggle('hidden')===false;
+      document.getElementById('navIconOpen').classList.toggle('hidden', open);
+      document.getElementById('navIconClose').classList.toggle('hidden', !open);
+      document.getElementById('navToggle').setAttribute('aria-expanded', open);
+    }
+    function closeMenu(){
+      document.getElementById('mobileMenu').classList.add('hidden');
+      document.getElementById('navIconOpen').classList.remove('hidden');
+      document.getElementById('navIconClose').classList.add('hidden');
+      document.getElementById('navToggle').setAttribute('aria-expanded','false');
+    }
+
+    // ---- Versand-Konfiguration ----
+    const RECIPIENT = "logistik@biberna.de";
+    // Optional: stiller Versand ohne E-Mail-Programm. Kostenlosen Access-Key auf
+    // https://web3forms.com mit logistik@biberna.de anfordern und hier eintragen:
+    const WEB3FORMS_KEY = "";
+
+    function collectQuote(){
+      const dict = I18N[lang];
+      const svc = [...selected].map(k => dict.svc[k] ? dict.svc[k][0] : k);
+      const f = document.getElementById('quoteForm');
+      const g = n => (f.elements[n] ? f.elements[n].value.trim() : '');
+      const lines = [
+        "Leistungen: " + (svc.join(', ') || '—'),
+        "Pakete/Monat: " + document.getElementById('pkgSlider').value,
+        "Paletten/Monat: " + document.getElementById('palSlider').value,
+        "Firma: " + g('company'),
+        "Name: " + g('name'),
+        "E-Mail: " + g('email'),
+        "Telefon: " + (g('phone') || '—'),
+        "", "Nachricht:", (g('message') || '—')
+      ];
+      return { from_name: g('company') || g('name'), email: g('email'), body: lines.join('\n') };
+    }
+    function resetForm(f){
+      f.reset();
+      document.getElementById('pkgVal').textContent='500'; document.getElementById('palVal').textContent='50';
+      document.getElementById('pkgSlider').value=500; document.getElementById('palSlider').value=50;
+    }
+    async function submitQuote(e){
+      e.preventDefault();
+      const f = e.target;
+      if(!f.checkValidity()){ f.reportValidity(); return false; }
+      const d = collectQuote();
+      const subject = "Angebotsanfrage – biberna Logistics";
+      const msg = document.getElementById('formMsg');
+
+      if (WEB3FORMS_KEY) {
+        try {
+          const res = await fetch("https://api.web3forms.com/submit", {
+            method:"POST", headers:{"Content-Type":"application/json", Accept:"application/json"},
+            body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject, from_name: d.from_name, email: d.email, message: d.body })
+          });
+          const j = await res.json();
+          if (j.success){ msg.textContent = I18N[lang].sent; resetForm(f); return false; }
+        } catch(_){ /* Fallback unten */ }
+      }
+      // Fallback: per E-Mail-Programm an logistik@biberna.de senden
+      window.location.href = "mailto:" + RECIPIENT
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(d.body);
+      msg.textContent = I18N[lang].alert;
+      return false;
+    }
+
+    applyLang();
+    const io = new IntersectionObserver((en)=>{ en.forEach(x=>{ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target);} }); },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
