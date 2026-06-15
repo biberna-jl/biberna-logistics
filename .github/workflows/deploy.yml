@@ -14,6 +14,7 @@ jobs:
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: 202.61.247.164
+          port: 32260
           username: leupold
           key: ${{ secrets.SSH_KEY }}
           script: |
