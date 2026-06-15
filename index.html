@@ -5,33 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>biberna Logistics — H.u.W. Schmänk GmbH & Co. KG</title>
   <meta name="description" content="Warehousing & Fulfillment aus Hersteller-Hand: Lagerung, Pick & Pack, Pre-FBA, Same-Day-Versand und Value-Added Services mit Textil- & Qualitätskompetenz. Über 20.000 Palettenstellplätze, 30.000 m². Made in Germany seit 1932." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sora: ['Sora', 'sans-serif'] },
-          colors: {
-            bordeaux:'#960A2C','bordeaux-d':'#76061F',paper:'#FFFFFF','paper-2':'#FAF8F7',
-            ink:'#1D1D1D',body:'#5E5B5B','body-2':'#8A8786',line:'#E7E2E0',
-          },
-          keyframes: { 'fade-up': { '0%':{opacity:'0',transform:'translateY(20px)',filter:'blur(4px)'},'100%':{opacity:'1',transform:'translateY(0)',filter:'blur(0)'} } },
-          animation: { 'fade-up':'fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards' },
-        },
-      },
-    };
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Sora', sans-serif; -webkit-font-smoothing: antialiased; }
-    .reveal { opacity: 0; } .reveal.in { animation: fade-up 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
-    @keyframes fade-up { 0%{opacity:0;transform:translateY(20px);filter:blur(4px);} 100%{opacity:1;transform:translateY(0);filter:blur(0);} }
-  </style>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="biberna Logistics">
+  <meta property="og:title" content="biberna Logistics — Logistik mit System">
+  <meta property="og:description" content="Warehousing & Fulfillment aus Hersteller-Hand. Über 20.000 Palettenstellplätze, 30.000 m². Made in Germany seit 1932.">
+  <meta property="og:image" content="https://www.biberna-logistics.de/og-image.jpg">
+  <meta property="og:url" content="https://www.biberna-logistics.de/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/app.css">
 </head>
 
 <body class="bg-paper text-body min-h-screen">
@@ -401,7 +384,7 @@
         hero_sub: "Warehousing und Fulfillment aus Hersteller-Hand — für Online-Marken, Händler und Industrie.",
         hero_desc: "Vom Stellplatz bis zum versandfertigen Paket: Wir lagern, kommissionieren und versenden Ihre Ware. Als Familienunternehmen, das die Biber-Bettwäsche erfunden hat, betreiben wir anspruchsvolle Logistik seit Jahrzehnten für unsere eigene Marke — diese Erfahrung stellen wir nun auch Ihnen zur Verfügung.",
         hero_cta1: "Gespräch vereinbaren", hero_cta2: "Unsere Services",
-        hero_trust: "H.u.W. Schmänk GmbH & Co. KG · Marke biberna · Standort Hamminkeln, Nordrhein-Westfalen",
+        hero_trust: "H.u.W. Schmänk GmbH & Co. KG · Marke biberna · Standort Hamminkeln, Westfalen",
         svc_kicker: "Was wir bieten", svc_title: "Zwei starke Säulen, eine Logistik aus einer Hand",
         svc_intro: "Ob reine Lagerfläche oder komplettes Fulfillment — wir behandeln Ihre Ware mit derselben Sorgfalt wie unsere eigene.",
         svc1_t: "Lagerung & Warehousing",
@@ -502,71 +485,4 @@
         int2_t: "Carriers", int2_d: "Integrated solutions: DHL, DPD, GLS",
         int3_t: "Shop systems", int3_d: "Connection of common shop systems",
         int4_t: "ERP & inventory", int4_d: "Further common interfaces on request",
-        about_kicker: "Our origin", about_title: "From textile manufacturer to logistics partner",
-        about_p1: "Since 1932 H.u.W. Schmänk has stood for textiles made in Germany — a family business across four generations. We invented brushed-cotton (Biber) bedding and still produce in Hamminkeln, Westphalia today, with two logistics sites and an integrated customs warehouse.",
-        about_p2: "This history taught us one thing: logistics is not a by-product, it is a craft. The expertise we built for our own products is now available to other companies as well.",
-        stat1_n: "450,000+", stat1_l: "Parcels per month",
-        stat2_n: "2", stat2_l: "Sites in Hamminkeln",
-        stat3_n: "1932", stat3_l: "Family-run since",
-        val_kicker: "What you can count on", val_title: "Three values that define us",
-        gal_kicker: "Inside", gal_title: "Our high-bay warehouse in Hamminkeln",
-        tb1_t: "No minimum volume", tb1_d: "No minimum revenue for the first three months — start risk-free.",
-        tb2_t: "30-day satisfaction guarantee", tb2_d: "Not happy? No problem within the first 30 days.",
-        tb3_t: "Free onboarding support", tb3_d: "We guide your start personally — at no extra cost.",
-        val1_t: "Quality", val1_d: "What we do, we do right. The quality standard from our own production applies to every order — no compromises.",
-        val2_t: "Reliability", val2_d: "A promise is a promise. You can rely on our processes, deadlines and transparency.",
-        val3_t: "Flexibility", val3_d: "Seasonal peaks or special requests — we adapt to your requirements, not the other way around.",
-        ct_kicker: "Contact", ct_title: "Let's talk about your logistics",
-        ct_desc: "Tell us about your requirements — we'll put together a tailored offer for you.",
-        ct_btn1: "Send an email", ct_btn2: "+49 2852 719-0",
-        ct_addr: "H.u.W. Schmänk GmbH & Co. KG · Zum Tollberg 11, 46499 Hamminkeln · 2nd site: Loikumer Straße",
-        foot_legal: "© 2026 H.u.W. Schmänk GmbH & Co. KG. All rights reserved.",
-        foot_imp: "Imprint", foot_priv: "Privacy", foot_agb: "Terms",
-        _toggle: "DE"
-      }
-    };
-
-    let lang = 'de';
-    function applyLang() {
-      const dict = I18N[lang];
-      document.documentElement.lang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (dict[k] != null) el.textContent = dict[k];
-      });
-      document.querySelectorAll('[data-i18n-list]').forEach(el => {
-        const k = el.getAttribute('data-i18n-list');
-        const items = dict[k] || [];
-        el.innerHTML = items.map(t =>
-          `<li class="flex items-start gap-2"><span class="text-bordeaux mt-0.5">▸</span><span>${t}</span></li>`
-        ).join('');
-      });
-      document.getElementById('langLabel').textContent = dict._toggle;
-    }
-    document.getElementById('langToggle').addEventListener('click', () => {
-      lang = (lang === 'de') ? 'en' : 'de';
-      applyLang();
-    });
-
-    function toggleMenu(){
-      const m=document.getElementById('mobileMenu');
-      const open=m.classList.toggle('hidden')===false;
-      document.getElementById('navIconOpen').classList.toggle('hidden', open);
-      document.getElementById('navIconClose').classList.toggle('hidden', !open);
-      document.getElementById('navToggle').setAttribute('aria-expanded', open);
-    }
-    function closeMenu(){
-      document.getElementById('mobileMenu').classList.add('hidden');
-      document.getElementById('navIconOpen').classList.remove('hidden');
-      document.getElementById('navIconClose').classList.add('hidden');
-      document.getElementById('navToggle').setAttribute('aria-expanded','false');
-    }
-    applyLang();
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
-</body>
-</html>
+        about_kicker: "Our origin", abo

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preise — biberna Logistics</title>
+  <meta name="description" content="Faire, transparente Logistikpreise — so individuell wie Ihr Geschäft. Stellen Sie Ihr Paket zusammen und fordern Sie ein Angebot an." />
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="biberna Logistics">
+  <meta property="og:title" content="biberna Logistics — Logistik mit System">
+  <meta property="og:description" content="Warehousing & Fulfillment aus Hersteller-Hand. Über 20.000 Palettenstellplätze, 30.000 m². Made in Germany seit 1932.">
+  <meta property="og:image" content="https://www.biberna-logistics.de/og-image.jpg">
+  <meta property="og:url" content="https://www.biberna-logistics.de/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+
+<body class="bg-paper text-body min-h-screen">
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-md">
+    <nav class="flex items-center justify-between px-6 lg:px-16 py-4">
+      <a href="index.html" class="flex items-center">
+        <img src="biberna-logistics-logo.png" alt="biberna Logistics" class="h-8 md:h-9 w-auto"
+             onerror="this.style.display='none';var f=document.getElementById('logoFallback');if(f)f.style.display='flex';" />
+        <span id="logoFallback" style="display:none" class="items-center gap-3">
+          <img src="https://www.biberna.de/cdn/shop/files/300922_biberna_Logo.jpg?width=240" alt="biberna" class="h-7 w-auto" />
+          <span class="text-bordeaux text-sm font-medium uppercase tracking-[0.2em] border-l border-line pl-3">Logistics</span>
+        </span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html#services" class="text-sm text-body hover:text-bordeaux transition-colors uppercase tracking-widest" data-i18n="nav_services"></a>
+        <a href="index.html#about"    class="text-sm text-body hover:text-bordeaux transition-colors uppercase tracking-widest" data-i18n="nav_about"></a>
+        <a href="prices.html" class="text-sm text-bordeaux font-medium transition-colors uppercase tracking-widest" data-i18n="nav_prices"></a>
+        <a href="index.html#contact"  class="text-sm text-body hover:text-bordeaux transition-colors uppercase tracking-widest" data-i18n="nav_contact"></a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="langToggle" class="text-xs uppercase tracking-widest text-body hover:text-bordeaux transition-colors border border-line rounded-full px-3 py-2"><span id="langLabel">EN</span></button>
+        <a href="#configurator" class="hidden md:inline-flex items-center rounded-full uppercase text-xs tracking-widest px-6 py-3 text-white bg-bordeaux hover:bg-bordeaux-d active:scale-[0.97] transition-all" data-i18n="nav_cta"></a>
+        <button id="navToggle" aria-label="Menü" aria-expanded="false" onclick="toggleMenu()" class="md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-line text-ink">
+          <svg id="navIconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg id="navIconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile-Menü -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-line bg-paper px-6 py-4">
+      <div class="flex flex-col gap-1">
+        <a href="index.html#services" onclick="closeMenu()" class="py-3 text-sm text-body hover:text-bordeaux uppercase tracking-widest border-b border-line/60" data-i18n="nav_services"></a>
+        <a href="index.html#about" onclick="closeMenu()" class="py-3 text-sm text-body hover:text-bordeaux uppercase tracking-widest border-b border-line/60" data-i18n="nav_about"></a>
+        <a href="prices.html" onclick="closeMenu()" class="py-3 text-sm text-bordeaux font-medium uppercase tracking-widest border-b border-line/60" data-i18n="nav_prices"></a>
+        <a href="index.html#contact" onclick="closeMenu()" class="py-3 text-sm text-body hover:text-bordeaux uppercase tracking-widest" data-i18n="nav_contact"></a>
+        <a href="#configurator" onclick="closeMenu()" class="mt-4 inline-flex justify-center rounded-full uppercase text-xs tracking-widest px-6 py-3 text-white bg-bordeaux hover:bg-bordeaux-d transition-all" data-i18n="nav_cta"></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="px-6 md:px-16 pt-36 pb-16 md:pt-44 md:pb-20 bg-paper-2 border-b border-line">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="reveal text-bordeaux uppercase tracking-[0.25em] text-xs font-semibold mb-5" data-i18n="ph_kicker"></p>
+      <h1 class="reveal text-ink text-[clamp(2.4rem,6vw,4rem)] font-bold tracking-tight mb-5" style="animation-delay:.1s" data-i18n="ph_title"></h1>
+      <p class="reveal text-body text-lg md:text-xl font-light max-w-2xl mx-auto" style="animation-delay:.2s" data-i18n="ph_sub"></p>
+    </div>
+  </section>
+
+  <!-- ===================== HOW PRICING WORKS ===================== -->
+  <section class="px-6 md:px-16 py-20 md:py-24 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="reveal">
+        <div class="w-12 h-12 mx-auto rounded-full bg-bordeaux text-white flex items-center justify-center font-bold mb-5">1</div>
+        <h3 class="text-ink text-lg font-semibold mb-2" data-i18n="step1_t"></h3>
+        <p class="text-body font-light" data-i18n="step1_d"></p>
+      </div>
+      <div class="reveal" style="animation-delay:.1s">
+        <div class="w-12 h-12 mx-auto rounded-full bg-bordeaux text-white flex items-center justify-center font-bold mb-5">2</div>
+        <h3 class="text-ink text-lg font-semibold mb-2" data-i18n="step2_t"></h3>
+        <p class="text-body font-light" data-i18n="step2_d"></p>
+      </div>
+      <div class="reveal" style="animation-delay:.2s">
+        <div class="w-12 h-12 mx-auto rounded-full bg-bordeaux text-white flex items-center justify-center font-bold mb-5">3</div>
+        <h3 class="text-ink text-lg font-semibold mb-2" data-i18n="step3_t"></h3>
+        <p class="text-body font-light" data-i18n="step3_d"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST BADGES ===================== -->
+  <section class="px-6 md:px-16 pb-4 md:pb-10 max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="reveal flex items-start gap-4 rounded-2xl border border-line bg-paper-2 p-6">
+        <div class="shrink-0 w-11 h-11 rounded-full bg-bordeaux/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-bordeaux" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div>
+          <h3 class="text-ink font-semibold mb-1" data-i18n="tb1_t"></h3>
+          <p class="text-body text-sm font-light" data-i18n="tb1_d"></p>
+        </div>
+      </div>
+      <div class="reveal flex items-start gap-4 rounded-2xl border border-line bg-paper-2 p-6" style="animation-delay:.1s">
+        <div class="shrink-0 w-11 h-11 rounded-full bg-bordeaux/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-bordeaux" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <div>
+          <h3 class="text-ink font-semibold mb-1" data-i18n="tb2_t"></h3>
+          <p class="text-body text-sm font-light" data-i18n="tb2_d"></p>
+        </div>
+      </div>
+      <div class="reveal flex items-start gap-4 rounded-2xl border border-line bg-paper-2 p-6" style="animation-delay:.2s">
+        <div class="shrink-0 w-11 h-11 rounded-full bg-bordeaux/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-bordeaux" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 21l1.8-4A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <div>
+          <h3 class="text-ink font-semibold mb-1" data-i18n="tb3_t"></h3>
+          <p class="text-body text-sm font-light" data-i18n="tb3_d"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONFIGURATOR ===================== -->
+  <section id="configurator" class="px-6 md:px-16 pb-24 md:pb-32 max-w-5xl mx-auto">
+    <div class="rounded-3xl border border-line bg-paper shadow-xl shadow-bordeaux/5 overflow-hidden">
+      <div class="bg-bordeaux text-white px-8 md:px-12 py-8">
+        <h2 class="text-2xl md:text-3xl font-bold" data-i18n="cfg_title"></h2>
+        <p class="text-white/75 mt-1" data-i18n="cfg_sub"></p>
+      </div>
+
+      <form id="quoteForm" class="px-8 md:px-12 py-10 space-y-12" onsubmit="return submitQuote(event)">
+
+        <!-- Step 1: services -->
+        <div>
+          <h3 class="text-ink text-lg font-semibold mb-1" data-i18n="cfg_s1_t"></h3>
+          <p class="text-body-2 text-sm mb-6" data-i18n="cfg_s1_hint"></p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="serviceOpts">
+            <!-- options injected by JS -->
+          </div>
+        </div>
+
+        <!-- Step 2: volume -->
+        <div class="border-t border-line pt-10">
+          <h3 class="text-ink text-lg font-semibold mb-6" data-i18n="cfg_s2_t"></h3>
+          <div class="grid md:grid-cols-2 gap-10">
+            <div>
+              <div class="flex items-baseline justify-between mb-3">
+                <label class="text-sm text-body" data-i18n="cfg_pkg"></label>
+                <span class="text-bordeaux font-bold text-lg"><span id="pkgVal">500</span><span data-i18n="cfg_permo"></span></span>
+              </div>
+              <input type="range" id="pkgSlider" min="0" max="20000" step="100" value="500" class="w-full" oninput="document.getElementById('pkgVal').textContent = Number(this.value).toLocaleString('de-DE')" />
+              <div class="flex justify-between text-xs text-body-2 mt-2"><span>0</span><span>20.000+</span></div>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between mb-3">
+                <label class="text-sm text-body" data-i18n="cfg_pal"></label>
+                <span class="text-bordeaux font-bold text-lg"><span id="palVal">50</span><span data-i18n="cfg_permo"></span></span>
+              </div>
+              <input type="range" id="palSlider" min="0" max="2000" step="10" value="50" class="w-full" oninput="document.getElementById('palVal').textContent = Number(this.value).toLocaleString('de-DE')" />
+              <div class="flex justify-between text-xs text-body-2 mt-2"><span>0</span><span>2.000+</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: contact -->
+        <div class="border-t border-line pt-10">
+          <h3 class="text-ink text-lg font-semibold mb-1" data-i18n="cfg_s3_t"></h3>
+          <p class="text-body-2 text-sm mb-6" data-i18n="cfg_s3_hint"></p>
+          <div class="grid md:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-body-2 mb-2" data-i18n="f_company"></label>
+              <input name="company" required class="w-full rounded-lg border border-line bg-paper-2 px-4 py-3 text-ink focus:border-bordeaux focus:ring-1 focus:ring-bordeaux outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-body-2 mb-2" data-i18n="f_name"></label>
+              <input name="name" required class="w-full rounded-lg border border-line bg-paper-2 px-4 py-3 text-ink focus:border-bordeaux focus:ring-1 focus:ring-bordeaux outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-body-2 mb-2" data-i18n="f_email"></label>
+              <input type="email" name="email" required class="w-full rounded-lg border border-line bg-paper-2 px-4 py-3 text-ink focus:border-bordeaux focus:ring-1 focus:ring-bordeaux outline-none transition" />
+            </div>
+            <div>
+              <label class="block text-xs uppercase tracking-widest text-body-2 mb-2" data-i18n="f_phone"></label>
+              <input name="phone" class="w-full rounded-lg border border-line bg-paper-2 px-4 py-3 text-ink focus:border-bordeaux focus:ring-1 focus:ring-bordeaux outline-none transition" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs uppercase tracking-widest text-body-2 mb-2" data-i18n="f_msg"></label>
+              <textarea name="message" rows="3" class="w-full rounded-lg border border-line bg-paper-2 px-4 py-3 text-ink focus:border-bordeaux focus:ring-1 focus:ring-bordeaux outline-none transition" data-i18n-ph="f_msg_ph"></textarea>
+            </div>
+          </div>
+          <p class="text-body-2 text-xs mt-4" data-i18n="f_note"></p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 border-t border-line pt-8">
+          <button type="submit" class="w-full sm:w-auto bg-bordeaux text-white px-10 py-4 text-sm rounded-full hover:bg-bordeaux-d active:scale-[0.97] transition-all uppercase tracking-wide font-semibold" data-i18n="f_submit"></button>
+          <span id="formMsg" class="text-sm text-bordeaux font-medium"></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- Enterprise note -->
+    <div class="mt-10 rounded-2xl bg-paper-2 border border-line p-8 text-center reveal">
+      <p class="text-ink text-lg font-semibold mb-1" data-i18n="ent_t"></p>
+      <p class="text-body font-light" data-i18n="ent_d"></p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="px-6 md:px-16 py-10 bg-ink border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
+      <div class="flex items-baseline gap-2">
+        <span class="text-white font-semibold lowercase text-lg">biberna</span><span class="text-bordeaux uppercase tracking-[0.2em] text-xs">logistics</span>
+      </div>
+      <p data-i18n="foot_legal"></p>
+      <div class="flex gap-6">
+        <a href="impressum.html" class="hover:text-white transition-colors" data-i18n="foot_imp"></a>
+        <a href="datenschutz.html" class="hover:text-white transition-colors" data-i18n="foot_priv"></a>
+        <a href="agb.html" class="hover:text-white transition-colors" data-i18n="foot_agb"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SERVICES = [
+      { key:'warehousing', icon:'M3 21V8l9-5 9 5v13M3 21h18M7 21v-6h4v6m4 0v-9h-4' },
+      { key:'fulfillment', icon:'M3 7l9-4 9 4-9 4-9-4zm0 0v10l9 4 9-4V7M12 11v10' },
+      { key:'sameday',     icon:'M13 2L3 14h7l-1 8 10-12h-7l1-8z' },
+      { key:'prefba',      icon:'M3 7l9-4 9 4-9 4-9-4zm9 14V11M5 18a7 7 0 0014 0' },
+      { key:'returns',     icon:'M3 12a9 9 0 109-9 9 9 0 00-9 9zm0 0l3-3m-3 3l3 3' },
+      { key:'valueadded',  icon:'M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z' },
+    ];
+
+    const I18N = {
+      de: {
+        nav_services:"Services", nav_about:"Über uns", nav_prices:"Preise", nav_contact:"Kontakt", nav_cta:"Angebot anfragen",
+        ph_kicker:"So individuell wie Ihr Geschäft",
+        ph_title:"Faire, transparente Preise",
+        ph_sub:"Logistik gibt es nicht von der Stange. Stellen Sie Ihr Leistungspaket zusammen und erhalten Sie ein passgenaues Angebot — ohne versteckte Kosten.",
+        step1_t:"Leistungen wählen", step1_d:"Wählen Sie die Services, die Sie benötigen — Mehrfachauswahl möglich.",
+        step2_t:"Volumen angeben", step2_d:"Geben Sie Ihr ungefähres monatliches Paket- und Palettenvolumen an.",
+        step3_t:"Angebot erhalten", step3_d:"Wir melden uns mit einem individuellen, transparenten Angebot.",
+        tb1_t:"Kein Mindestumsatz", tb1_d:"Die ersten drei Monate ohne Mindestumsatz — starten Sie ohne Risiko.",
+        tb2_t:"30 Tage Zufriedenheitsgarantie", tb2_d:"Nicht zufrieden? In den ersten 30 Tagen kein Problem.",
+        tb3_t:"Kostenloser Onboarding-Support", tb3_d:"Wir begleiten Ihren Start persönlich — ohne Zusatzkosten.",
+        cfg_title:"Ihr Angebot konfigurieren", cfg_sub:"In drei Schritten zu Ihrem persönlichen Preis.",
+        cfg_s1_t:"1. Welche Leistungen benötigen Sie?", cfg_s1_hint:"Mehrfachauswahl möglich.",
+        cfg_s2_t:"2. Wie hoch ist Ihr Volumen?",
+        cfg_pkg:"Pakete pro Monat", cfg_pal:"Paletten pro Monat", cfg_permo:" /Monat",
+        cfg_s3_t:"3. Ihre Kontaktdaten", cfg_s3_hint:"Damit wir Ihnen ein passgenaues Angebot zusenden können.",
+        f_company:"Firma", f_name:"Name", f_email:"E-Mail", f_phone:"Telefon", f_msg:"Ihre Nachricht",
+        f_msg_ph:"Beschreiben Sie kurz Ihre Produkte und Anforderungen …",
+        f_note:"* Pflichtfelder. Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.",
+        f_submit:"Angebot anfragen",
+        ent_t:"Großvolumen oder Sonderprozesse?", ent_d:"Über 20.000 Palettenstellplätze und 30.000 m² Lagerfläche — wir skalieren mit Ihnen. Sprechen Sie uns direkt an.",
+        foot_legal:"© 2026 H.u.W. Schmänk GmbH & Co. KG. Alle Rechte vorbehalten.",
+        foot_imp:"Impressum", foot_priv:"Datenschutz", foot_agb:"AGB",
+        svc:{
+          warehousing:["Lagerung & Warehousing","Stellplätze, Bestandsführung, sichere Flächen"],
+          fulfillment:["Fulfillment & Kommissionierung","Pick, Pack und Versand aus einer Hand"],
+          sameday:["Taggleicher Versand","Same-Day-Versand für eilige Bestellungen"],
+          prefba:["Pre-FBA für Amazon","Vorbereitung & Anlieferung an Amazon FBA"],
+          returns:["Retourenmanagement","Prüfung, Aufbereitung, Wiedereinlagerung"],
+          valueadded:["Value-Added Services","Konfektionierung, Veredelung, Qualitätskontrolle"],
+        },
+        _toggle:"EN",
+        alert:"Ihre Anfrage ist vorbereitet — Ihr E-Mail-Programm öffnet sich. Bitte nur noch auf Senden klicken.",
+        sent:"Vielen Dank! Ihre Anfrage wurde an unser Logistik-Team gesendet."
+      },
+      en: {
+        nav_services:"Services", nav_about:"About", nav_prices:"Pricing", nav_contact:"Contact", nav_cta:"Request a quote",
+        ph_kicker:"As unique as your business",
+        ph_title:"Fair, transparent pricing",
+        ph_sub:"Logistics is never one-size-fits-all. Build your service package and receive a tailored quote — with no hidden costs.",
+        step1_t:"Choose services", step1_d:"Select the services you need — you can pick more than one.",
+        step2_t:"Set your volume", step2_d:"Tell us your approximate monthly parcel and pallet volume.",
+        step3_t:"Get your quote", step3_d:"We get back to you with an individual, transparent offer.",
+        tb1_t:"No minimum volume", tb1_d:"No minimum revenue for the first three months — start risk-free.",
+        tb2_t:"30-day satisfaction guarantee", tb2_d:"Not happy? No problem within the first 30 days.",
+        tb3_t:"Free onboarding support", tb3_d:"We guide your start personally — at no extra cost.",
+        cfg_title:"Configure your quote", cfg_sub:"Three steps to your personal price.",
+        cfg_s1_t:"1. Which services do you need?", cfg_s1_hint:"You can select more than one.",
+        cfg_s2_t:"2. What is your volume?",
+        cfg_pkg:"Parcels per month", cfg_pal:"Pallets per month", cfg_permo:" /month",
+        cfg_s3_t:"3. Your contact details", cfg_s3_hint:"So we can send you a tailored offer.",
+        f_company:"Company", f_name:"Name", f_email:"E-mail", f_phone:"Phone", f_msg:"Your message",
+        f_msg_ph:"Briefly describe your products and requirements …",
+        f_note:"* Required fields. Your data is used solely to process your request.",
+        f_submit:"Request a quote",
+        ent_t:"High volume or special processes?", ent_d:"Over 20,000 pallet positions and 30,000 m² of space — we scale with you. Get in touch directly.",
+        foot_legal:"© 2026 H.u.W. Schmänk GmbH & Co. KG. All rights reserved.",
+        foot_imp:"Imprint", foot_priv:"Privacy", foot_agb:"Terms",
+        svc:{
+          warehousing:["Storage & Warehousing","Pallet positions, inventory, secure space"],
+          fulfillment:["Fulfillment & Picking","Pick, pack and dispatch from one source"],
+          sameday:["Same-day shipping","Same-day dispatch for urgent orders"],
+          prefba:["Pre-FBA for Amazon","Prep & delivery to Amazon FBA"],
+          returns:["Returns management","Inspection, refurbishment, restocking"],
+          valueadded:["Value-Added Services","Assembly, finishing, quality control"],
+        },
+        _toggle:"DE",
+        alert:"Your request is ready — your email app will open. Just hit send.",
+        sent:"Thank you! Your request has been sent to our logistics team."
+      }
+    };
+
+    let lang = 'de';
+    const selected = new Set(['warehousing','fulfillment']);
+
+    function renderServices() {
+      const dict = I18N[lang];
+      const wrap = document.getElementById('serviceOpts');
+      wrap.innerHTML = SERVICES.map(s => {
+        const [t,d] = dict.svc[s.key];
+        const on = selected.has(s.key);
+        return `<button type="button" data-key="${s.key}" onclick="toggleService('${s.key}')"
+          class="opt ${on?'selected':''} text-left rounded-xl border border-line bg-paper p-5 hover:border-bordeaux/50 transition-all relative">
+          <span class="check absolute top-3 right-3 w-5 h-5 rounded-full bg-bordeaux text-white text-[11px
