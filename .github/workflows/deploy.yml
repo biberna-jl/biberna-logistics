@@ -13,7 +13,7 @@ jobs:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
-          host: DEINE_SERVER_IP
+          host: 202.61.247.164
           username: leupold
           key: ${{ secrets.SSH_KEY }}
           script: |
