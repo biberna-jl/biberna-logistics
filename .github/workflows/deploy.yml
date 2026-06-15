@@ -1,0 +1,22 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: DEINE_SERVER_IP
+          username: leupold
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/biberna-logistics
+            git pull
+``
