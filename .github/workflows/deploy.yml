@@ -19,3 +19,4 @@ jobs:
           script: |
             cd /var/www/biberna-logistics
             git pull
+``
